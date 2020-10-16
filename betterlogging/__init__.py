@@ -6,9 +6,9 @@
 from typing import TYPE_CHECKING
 
 import logging
-from logging import *  # noqa
-from logging import root  # noqa
-from .colorized import ColorizedFormatter  # noqa
+from logging import *  # noqa: F401, F403
+from logging import root
+from .colorized import ColorizedFormatter  # noqa: F401
 
 from .trace import TRACE, TRACE_NAME
 
@@ -36,5 +36,5 @@ if TYPE_CHECKING:
     root: Logger = root  # noqa
 
 
-    def getLogger(name=None) -> 'Logger':
+    def getLogger(name=None) -> 'Logger':  # noqa: E303
         return logging.getLogger(name)

@@ -10,9 +10,9 @@ from logging import LogRecord
 from .colors import colors
 from .trace import TRACE
 
-DEFAULT_FORMAT = f'%(c_fg_green)s%(asctime)s %(c_color)s%(levelname)-8s%(c_reset)s %(c_fg_cyan)s[%(name)s] ' \
-                 f'%(c_reset)s(%(filename)s:%(c_underscore)s%(funcName)s%(c_reset)s:%(lineno)d) ' \
-                 f'%(c_color)s%(message)s%(c_reset)s'
+DEFAULT_FORMAT = '%(c_fg_green)s%(asctime)s %(c_color)s%(levelname)-8s%(c_reset)s %(c_fg_cyan)s[%(name)s] ' \
+                 '%(c_reset)s(%(filename)s:%(c_underscore)s%(funcName)s%(c_reset)s:%(lineno)d) ' \
+                 '%(c_color)s%(message)s%(c_reset)s'
 
 DEFAULT_LEVEL_COLORS = {
     TRACE: colors['c_fg_cyan'] + colors['c_bright'],
