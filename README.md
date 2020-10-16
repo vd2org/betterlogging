@@ -10,7 +10,7 @@ Python 3.6 and above. No any additional dependencies.
 
 ### Installation
 
-`pip install https://github.com/vd2org/betterlogging/archive/v0.0.1.zip
+`pip install https://github.com/vd2org/betterlogging/archive/v0.0.2.zip
 `
 
 ### Simple usage
