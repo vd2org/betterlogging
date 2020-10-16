@@ -8,7 +8,7 @@ from logging import Formatter
 from logging import LogRecord
 
 from .colors import colors
-from .trace_lvl import TRACE
+from .trace import TRACE
 
 DEFAULT_FORMAT = f'%(c_fg_green)s%(asctime)s %(c_color)s%(levelname)-8s%(c_reset)s %(c_fg_cyan)s[%(name)s] ' \
                  f'%(c_reset)s(%(filename)s:%(c_underscore)s%(funcName)s%(c_reset)s:%(lineno)d) ' \

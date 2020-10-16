@@ -10,7 +10,7 @@ from logging import *  # noqa
 from logging import root  # noqa
 from .colorized import ColorizedFormatter  # noqa
 
-from .trace_lvl import TRACE, TRACE_NAME
+from .trace import TRACE, TRACE_NAME
 
 
 class BetterLogger(logging.Logger):

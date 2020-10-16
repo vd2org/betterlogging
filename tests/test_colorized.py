@@ -15,7 +15,7 @@ def test_colorized():
     logger.addHandler(handler)
     logger.setLevel(logging.TRACE)
 
-    logger.log(logging.TRACE, "some trace message")
+    logger.trace("some trace message")
     logger.debug("some debug message")
     logger.info("some info message")
     logger.warning("some warning message")
