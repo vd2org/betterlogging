@@ -30,7 +30,6 @@ jobs:
 
       - name: Publish
         env: # Or as an environment variable
-          PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+          PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
         run: |
-          python3 -m twine upload -u __token__ -p $PYPI_TOKEN dist/*
+          python3 -m twine upload -u "__token__" -p $PYPI_TOKEN dist/*
