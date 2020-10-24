@@ -25,4 +25,4 @@ def test_colorized():
     try:
         raise TypeError
     except TypeError:
-        logger.exception("fucking exception")
+        logger.exception("some exception")
