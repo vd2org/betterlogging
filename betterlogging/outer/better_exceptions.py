@@ -156,12 +156,11 @@ class ExceptionFormatter:
         else:
             return char
 
-    @staticmethod
-    def _is_file_mine(file):
+    def _is_file_mine(self, file):
         filepath = os.path.abspath(file).lower()
         if not filepath.endswith(".py"):
             return False
-        return not filepath.startswith(sys.prefix.lower())
+        return not filepath.startswith(sys.prefix.lower()) and not any(filepath.startswith(d) for d in self._lib_dirs)
 
     def _extract_frames(self, tb, is_first, *, limit=None, from_decorator=False):
         frames, final_source = [], None
