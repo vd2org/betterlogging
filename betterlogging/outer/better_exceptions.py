@@ -120,6 +120,7 @@ class ExceptionFormatter:
         colorize=False,
         backtrace=False,
         diagnose=True,
+        hide_lib_diagnose=True,
         theme=None,
         style=None,
         max_length=128,
@@ -129,6 +130,7 @@ class ExceptionFormatter:
     ):
         self._colorize = colorize
         self._diagnose = diagnose
+        self._hide_lib_diagnose = hide_lib_diagnose
         self._theme = theme or self._default_theme
         self._backtrace = backtrace
         self._syntax_highlighter = SyntaxHighlighter(style)
@@ -217,7 +219,7 @@ class ExceptionFormatter:
                     lines.append(self._syntax_highlighter.highlight(source))
                 else:
                     lines.append(source)
-                if self._diagnose and self._is_file_mine(filename):
+                if self._diagnose and (not self._hide_lib_diagnose or self._is_file_mine(filename)):
                     relevant_values = self._get_relevant_values(source, frame)
                     values = self._format_relevant_values(list(relevant_values), colorize)
                     lines += list(values)
