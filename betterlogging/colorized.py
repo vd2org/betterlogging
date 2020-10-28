@@ -27,10 +27,10 @@ DEFAULT_LEVEL_COLORS = {
 
 
 class ColorizedFormatter(Formatter):
-    def __init__(self, fmt=None, level_colors=None, *args, **kwargs):
+    def __init__(self, fmt=None, level_colors=None, hide_lib_diagnose=True, *args, **kwargs):
         self.level_colors = level_colors or DEFAULT_LEVEL_COLORS
         fmt = fmt or DEFAULT_FORMAT
-        self._formatter = ExceptionFormatter(colorize=True, backtrace=False, diagnose=True)
+        self._formatter = ExceptionFormatter(colorize=True, backtrace=False, diagnose=True, hide_lib_diagnose=hide_lib_diagnose)
 
         super().__init__(fmt=fmt, *args, **kwargs)
 
