@@ -30,10 +30,13 @@ Python 3.6 and above. No any additional dependencies.
 ```python
 import betterlogging as logging
 
-logger = logging.getLogger("test")
 
+# You can use shortcut:
+logger = logging.get_colorized_logger(name="test")
+
+# Or, if you want to configure formatter:
 handler = logging.StreamHandler()
-handler.setFormatter(logging.ColorizedFormatter())
+handler.setFormatter(logging.ColorizedFormatter(hide_lib_diagnose=False))
 
 logger.addHandler(handler)
 logger.setLevel(logging.TRACE)

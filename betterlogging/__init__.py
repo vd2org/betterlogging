@@ -3,7 +3,7 @@
 # BetterLogging is released under the MIT License (see LICENSE).
 
 
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 import logging
 from logging import *  # noqa: F401, F403
@@ -38,3 +38,12 @@ if TYPE_CHECKING:
 
     def getLogger(name=None) -> 'Logger':  # noqa: E303
         return logging.getLogger(name)
+
+
+def get_colorized_logger(name: Optional[str] = None) -> 'Logger':
+    logger = logging.getLogger(name)
+    handler = logging.StreamHandler()
+    formatter = ColorizedFormatter()
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    return logger
