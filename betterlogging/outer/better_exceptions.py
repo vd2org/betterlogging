@@ -160,7 +160,7 @@ class ExceptionFormatter:
         filepath = os.path.abspath(file).lower()
         if not filepath.endswith(".py"):
             return False
-        return not any(filepath.startswith(d) for d in self._lib_dirs)
+        return not filepath.startswith(sys.prefix.lower()) and not any(filepath.startswith(d) for d in self._lib_dirs)
 
     def _extract_frames(self, tb, is_first, *, limit=None, from_decorator=False):
         frames, final_source = [], None
@@ -217,7 +217,7 @@ class ExceptionFormatter:
                     lines.append(self._syntax_highlighter.highlight(source))
                 else:
                     lines.append(source)
-                if self._diagnose:
+                if self._diagnose and self._is_file_mine(filename):
                     relevant_values = self._get_relevant_values(source, frame)
                     values = self._format_relevant_values(list(relevant_values), colorize)
                     lines += list(values)
