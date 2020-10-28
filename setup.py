@@ -9,7 +9,7 @@ import setuptools
 
 setuptools.setup(
     name='betterlogging',
-    version='0.0.7',
+    version='0.0.8',
     author='Vd',
     author_email='vd@vd2.org',
     url='https://github.com/vd2org/betterlogging',
