@@ -40,7 +40,24 @@ if TYPE_CHECKING:
         return logging.getLogger(name)
 
 
+def basic_colorized_config(**kwargs):
+    """
+    Same as logging.basicConfig, but sets ColorizedFormatter as default for any SeamHandler in root logger
+    :return:
+    """
+    stream_handler = logging.StreamHandler()
+    stream_handler.setFormatter(ColorizedFormatter())
+    kwargs.update({'handlers': [stream_handler]})
+    return logging.basicConfig(**kwargs)
+
+
 def get_colorized_logger(name: Optional[str] = None) -> 'Logger':
+    """
+    Use this function to get an instance of logger with ColorizedFormatter.
+    Warning! If you will set basic_colorized_config(), logs produced with this logger would duplicated.
+    :param name:
+    :return:
+    """
     logger = logging.getLogger(name)
     handler = logging.StreamHandler()
     formatter = ColorizedFormatter()
