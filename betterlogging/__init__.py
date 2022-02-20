@@ -3,13 +3,12 @@
 # BetterLogging is released under the MIT License (see LICENSE).
 
 
-from typing import TYPE_CHECKING, Optional
-
 import logging
 from logging import *  # noqa: F401, F403
 from logging import root
-from .colorized import ColorizedFormatter  # noqa: F401
+from typing import TYPE_CHECKING, Optional
 
+from .colorized import ColorizedFormatter  # noqa: F401
 from .trace import TRACE, TRACE_NAME
 
 

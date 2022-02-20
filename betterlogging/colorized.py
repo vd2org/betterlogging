@@ -6,9 +6,9 @@
 import logging
 from logging import Formatter
 from logging import LogRecord
-from .outer.better_exceptions import ExceptionFormatter
 
 from .colors import colors
+from .outer.better_exceptions import ExceptionFormatter
 from .trace import TRACE
 
 DEFAULT_FORMAT = '%(c_fg_green)s%(asctime)s %(c_color)s%(levelname)-8s%(c_reset)s %(c_fg_cyan)s[%(name)s] ' \
@@ -30,14 +30,18 @@ class ColorizedFormatter(Formatter):
     def __init__(self, fmt=None, level_colors=None, hide_lib_diagnose=True, *args, **kwargs):
         self.level_colors = level_colors or DEFAULT_LEVEL_COLORS
         fmt = fmt or DEFAULT_FORMAT
-        self._formatter = ExceptionFormatter(colorize=True, backtrace=False, diagnose=True, hide_lib_diagnose=hide_lib_diagnose)
+        self._formatter = ExceptionFormatter(colorize=True, backtrace=False, diagnose=True,
+                                             hide_lib_diagnose=hide_lib_diagnose)
 
         super().__init__(fmt=fmt, *args, **kwargs)
 
     def format(self, record: LogRecord) -> str:
         color = self.level_colors.get(record.levelno, self.level_colors.get(None, ""))
+        orig = record.__dict__
         record.__dict__ = {**colors, "c_color": color, **record.__dict__}
-        return super().format(record)
+        out = super().format(record)
+        record.__dict__ = orig
+        return out
 
     def formatException(self, ei) -> str:
         ex = self._formatter.format_exception(*ei)
