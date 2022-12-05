@@ -50,9 +50,9 @@ class ColorizedFormatter(Formatter):
             'style': style
         }
 
-        if sys.version_info.minor > 7:
+        if sys.version_info.major >= 3 and sys.version_info.minor >= 8:
             kwargs['validate'] = validate
-        if sys.version_info.minor > 9:
+        if sys.version_info.major >= 3 and sys.version_info.minor >= 10:
             kwargs['defaults'] = defaults
 
         super().__init__(**kwargs)
