@@ -47,13 +47,15 @@ class ColorizedFormatter(Formatter):
         kwargs = {
             'fmt': fmt,
             'datefmt': datefmt,
-            'style': style
+            'style': style,
+            'validate': validate,
+            'defaults': defaults
         }
 
-        if sys.version_info.major >= 3 and sys.version_info.minor >= 8:
-            kwargs['validate'] = validate
-        if sys.version_info.major >= 3 and sys.version_info.minor >= 10:
-            kwargs['defaults'] = defaults
+        if sys.version_info.major == 3 and sys.version_info.minor < 8:
+            del kwargs['validate']
+        if sys.version_info.major == 3 and sys.version_info.minor < 10:
+            del kwargs['defaults']
 
         super().__init__(**kwargs)
 
