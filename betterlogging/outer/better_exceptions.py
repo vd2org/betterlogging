@@ -1,7 +1,7 @@
-# Took from loguru project(https://git.io/JTnSu)
+# Took from better exceptions repo (https://github.com/Qix-/better-exceptions)
 # License: MIT
-# Version: 0.5.3
-# https://git.io/JTnSB
+# Version: 0.2.1
+# https://github.com/Qix-/better-exceptions
 
 
 import builtins
