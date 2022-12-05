@@ -27,13 +27,23 @@ DEFAULT_LEVEL_COLORS = {
 
 
 class ColorizedFormatter(Formatter):
-    def __init__(self, fmt=None, level_colors=None, hide_lib_diagnose=True, *args, **kwargs):
+    def __init__(
+            self,
+            fmt=None,
+            datefmt=None,
+            style='%',
+            validate=True,
+            *,
+            defaults=None,
+            level_colors=None,
+            hide_lib_diagnose=True
+    ):
         self.level_colors = level_colors or DEFAULT_LEVEL_COLORS
         fmt = fmt or DEFAULT_FORMAT
         self._formatter = ExceptionFormatter(colorize=True, backtrace=False, diagnose=True,
                                              hide_lib_diagnose=hide_lib_diagnose)
 
-        super().__init__(fmt=fmt, *args, **kwargs)
+        super().__init__(fmt=fmt, datefmt=datefmt, style=style, validate=validate, defaults=defaults)
 
     def format(self, record: LogRecord) -> str:
         color = self.level_colors.get(record.levelno, self.level_colors.get(None, ""))
