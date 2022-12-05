@@ -4,6 +4,7 @@
 
 
 import logging
+import sys
 from logging import Formatter
 from logging import LogRecord
 
@@ -43,7 +44,18 @@ class ColorizedFormatter(Formatter):
         self._formatter = ExceptionFormatter(colorize=True, backtrace=False, diagnose=True,
                                              hide_lib_diagnose=hide_lib_diagnose)
 
-        super().__init__(fmt=fmt, datefmt=datefmt, style=style, validate=validate, defaults=defaults)
+        kwargs = {
+            'fmt': fmt,
+            'datefmt': datefmt,
+            'style': style
+        }
+
+        if sys.version_info.minor > 7:
+            kwargs['validate'] = validate
+        if sys.version_info.minor > 9:
+            kwargs['defaults'] = defaults
+
+        super().__init__(**kwargs)
 
     def format(self, record: LogRecord) -> str:
         color = self.level_colors.get(record.levelno, self.level_colors.get(None, ""))
