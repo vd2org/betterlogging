@@ -17,7 +17,7 @@ But for better typing, I prefer to use `betterlogging` everywhere.
 
 ### Requirements
 
-Python 3.6 and above. No additional dependencies.
+Python 3.7 and above. No additional dependencies.
 
 ### Installation
 
