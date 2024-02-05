@@ -28,8 +28,8 @@ Python 3.7 and above. No additional dependencies.
 #### Simple usage
 
 ```python
-
 import betterlogging as logging
+
 
 logging.basic_colorized_config(level=logging.INFO)
 
